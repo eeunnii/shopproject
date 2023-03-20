@@ -12,6 +12,16 @@
 ![image](https://user-images.githubusercontent.com/109579667/226466080-ad8c8c0c-030c-4112-b93f-5763df468246.png)<br>
 스프링부트의 스타트 패키지를 생성하고, 의존성엔 spring web 을 추가하였습니다.<br>
 
+|이미지|설명|
+|--|--|
+|![image](https://user-images.githubusercontent.com/109579667/226468254-f4fa2e16-a137-4fd3-b539-9f0bddc825cb.png)|db와의 연결을 위한 의존성 추가|
+|Cell1|Cell2|
+|Cell1|Cell2|
+|Cell1|Cell2|
+
+
+
+
 # 프로젝트 초기 설정<br>
 ### pom.xml <br>
 ![image](https://user-images.githubusercontent.com/109579667/226468254-f4fa2e16-a137-4fd3-b539-9f0bddc825cb.png)
