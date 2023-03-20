@@ -93,3 +93,21 @@
   |![image](https://user-images.githubusercontent.com/109579667/226484657-fe4f9eca-c160-4a36-989b-5e4b8ecfbc6c.png)|![image](https://user-images.githubusercontent.com/109579667/226485994-2468f274-2d5f-41eb-930a-c07f2881cd08.png)|
   |![image](https://user-images.githubusercontent.com/109579667/226484692-a286da95-8199-409c-9d55-0cb76c3aa9d7.png)|![image](https://user-images.githubusercontent.com/109579667/226486036-d0581234-3832-45fa-ba9a-6c1590a0273f.png)|
   |![image](https://user-images.githubusercontent.com/109579667/226484720-002585d6-90ab-4fe4-b8b7-4158184afe11.png)|![image](https://user-images.githubusercontent.com/109579667/226486069-1da96139-d185-41f8-be4c-2ca53ccce074.png)| 
+<br>
+<br>
+<br>
+
+---
+## localhost 접속 시
+![image](https://user-images.githubusercontent.com/109579667/226486901-1f135ea1-88e3-4d04-a371-feb483995c61.png)
+해당 링크를 누르면 정리된 데이터를 확인하실 수 있습니다.<br>
+![image](https://user-images.githubusercontent.com/109579667/226487023-ce69a92b-2932-4c87-ae02-dad133699e4f.png)
+dataType : JSON 을 클릭하면 json데이터를 받아올 수 있습니다. <br>
+![image](https://user-images.githubusercontent.com/109579667/226487157-d36782db-57f2-4fdf-9c68-024bf6bd9c6c.png)
+<br>
+
+---
+
+
+## docker compose up
+mysqldb 컨테이너는 정상적으로 생성되지만, web컨테이너와 연결에서 오류가 발생합니다. 해당오류는 잡지못하였습니다..
