@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<head></head>
+<script th:inline="javascript">
+	
+	$(function(){
+		fn_ProductList();
+	});
+
+	function fn_ProductList(){
+		$.ajax({
+			type: 'get',
+			url: '/buyingInfo/list',
+			dataType: 'json',
+			success: function(resData){
+				$('#buying_list').empty();
+				var div = '';
+				$.each(resData.buyingInfoList, function(i, buying){
+				div += '<tr><td>'+buying.customerDTO.customerName+'</td>';
+				div += '<td>'+buying.productDTO.productPrice+'</td>';
+				div += '<td>'+buying.buyingDate+'</td>';
+				div += '<td>'+buying.buyingNo+'</td>';
+				div += '<td>'+buying.productDTO.productName+'</td>';
+				div += '<td>'+buying.productDTO.productDate+'</td>';
+				div += '<td>'+buying.productDTO.companyName+'</td><tr>';
+				});
+				$('#buying_list').append(div);
+			}
+		});
+	}
+
+</script>
+<body>
+
+
+	<div>알엠소프트 코딩테스트 - 지원자 정은지</div>
+	<hr>
+	<div>구매자 조회 리스트</div>
+	<hr>
+	
+	
+		<table border="1">
+			<thead>
+				<tr>
+					<td rowspan="2">구매자</td>
+					<td rowspan="2">구매일자</td>
+					<td rowspan="2">구매번호</td>
+					<td colspan="4">상품정보</td>
+				</tr>
+				<tr>
+					<td>상품명</td>
+					<td>금액</td>
+					<td>등록일자</td>
+					<td>등록업체명</td>
+				</tr>
+			</thead>
+			<tbody id="buying_list"></tbody>
+		</table>
+		
+	<a th:href="@{/buyingInfo/list}">dataType : JSON</a>
+	<hr>
+	<a th:href="@{/}">메인으로 이동하기</a>
+
+
+</body>
+</html>

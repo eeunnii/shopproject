@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mini.shop.mapper.ShopMapper">
+	
+	<resultMap type="CustomerDTO" id="CustomerMap">
+		<result column="CUSTOMER_NO" property="customerNo"/>
+		<result column="CUSTOMER_NAME" property="customerName"/>
+		<result column="CUSTOMER_TEL" property="customerTel"/>
+	</resultMap>
+	
+	<resultMap type="ProductDTO" id="ProductMap">
+		<result column="PRODUCT_NO" property="productNo"/>
+		<result column="PRODUCT_NAME" property="productName"/>
+		<result column="PRODUCT_PRICE" property="productPrice"/>
+		<result column="PRODUCT_DATE" property="productDate"/>
+		<result column="COMPANY_NO" property="companyNo"/>
+		<result column="COMPANY_NAME" property="companyName"/>
+	</resultMap>
+	
+	<resultMap type="BuyingInfoDTO" id="BuyingMap">
+		<result column="BUYING_NO" property="buyingNo"/>
+		<result column="BUYING_DATE" property="buyingDate"/>
+		<result column="CUSTOMER_NO" property="customerNo"/>
+		<result column="PRODUCT_NO" property="productNo"/>
+		<collection resultMap="ProductMap" property="productDTO"></collection>
+		<collection resultMap="CustomerMap" property="customerDTO"></collection>
+	</resultMap>
+	
+	
+	
+	<select id="selectProductAll" resultType="ProductDTO">
+		SELECT PRODUCT_NO, PRODUCT_NAME, PRODUCT_PRICE,PRODUCT_DATE, COMPANY_NAME
+		  FROM PRODUCT
+	</select>
+	
+	<select id="selectProductcount" resultType="int">
+		SELECT COUNT(*)
+	   	  FROM PRODUCT
+	</select>
+	
+	
+	
+	
+	<select id="selectCompanyAll" resultType="CompanyDTO">
+		SELECT COMPANY_NO, COMPANY_NAME, COMPANY_LEADER, COMPANY_TEL
+		  FROM COMPANY
+	</select>
+	
+	<select id="selectCompanyCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM COMPANY
+	</select>
+	
+	
+	
+	
+	<select id="selectCustomerAll" resultType="CustomerDTO">
+		SELECT CUSTOMER_NO, CUSTOMER_NAME, CUSTOMER_TEL
+		  FROM CUSTOMER
+	</select>
+	
+	<select id="selectCustomerCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM CUSTOMER
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="selectBuyingInfoAll" resultMap="BuyingMap">
+		SELECT CUS.BUYING_NO, CUS.CUSTOMER_NAME, CUS.CUSTOMER_TEL, P.PRODUCT_NAME, P.PRODUCT_PRICE, P.PRODUCT_DATE, P.COMPANY_NAME, CUS.BUYING_DATE
+ 		  FROM PRODUCT P INNER JOIN (
+						SELECT BU.BUYING_NO, BU.PRODUCT_NO, C.CUSTOMER_NAME, C.CUSTOMER_TEL, BU.BUYING_DATE
+						  FROM BUYING_INFO BU INNER JOIN CUSTOMER C
+							ON BU.CUSTOMER_NO = C.CUSTOMER_NO) CUS
+   		    ON P.PRODUCT_NO = CUS.PRODUCT_NO
+	</select>
+	
+	<select id="selectBuyingInfoCount" resultType="int">
+		SELECT COUNT(*)
+		  FROM BUYING_INFO
+	</select>
+	
+
+
+	
+	
+
+	
+
+	
+
+	<insert id="insertCustomer" parameterType="CustomerDTO">
+		INSERT INTO CUSTOMER
+			(CUSTOMER_NAME, CUSTOMER_TEL)
+		VALUES
+			(#{customerName}, #{customerTel})
+	</insert>
+	
+	
+	
+</mapper>

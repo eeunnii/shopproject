@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<head></head>
+<script th:inline="javascript">
+	
+	$(function(){
+		fn_ProductList();
+	});
+	
+	function fn_ProductList(){
+		$.ajax({
+			type: 'get',
+			url: '/product/list',
+			dataType: 'json',
+			success: function(resData){ 
+				$('#product_list').empty();
+				var div = '';
+				$.each(resData.productList, function(i, product){
+					div += '<tr><td>'+product.productName+'</td>';
+					div += '<td>'+product.productPrice+'</td>';
+					div += '<td>'+product.productDate+'</td>';
+					div += '<td>'+product.companyName+'</td><tr>';
+				});
+				$('#product_list').append(div);
+				
+				
+				$('#total_product_count').empty();
+				$('#total_product_count').text("총 상품 수 : "+resData.total_product_count);
+			}
+		});
+	}
+	
+	
+	
+</script>
+<body>
+
+
+	<div>알엠소프트 코딩테스트 - 지원자 정은지</div>
+	<hr>
+	<div>구매자 조회 리스트</div>
+	<hr>
+	
+	
+		<table border="1">
+			<caption id="total_product_count"></caption>
+			<thead>
+				<tr>
+					<td>상품명</td>
+					<td>금액</td>
+					<td>등록일자</td>
+					<td>등록업체명</td>
+				</tr>
+			</thead>
+			<tbody id="product_list">
+			</tbody>
+		</table>
+		
+	<a th:href="@{/product/list}">dataType : JSON</a>
+	<hr>
+	<a th:href="@{/}">메인으로 이동하기</a>
+
+
+</body>
+</html>

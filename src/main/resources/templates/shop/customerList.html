@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<head></head>
+<script th:inline="javascript">
+	$(function(){
+		// 함수 호출
+		fn_customerList();
+	});
+	
+	
+	// 함수 호출
+	
+	
+	
+	function fn_customerList(){
+		$.ajax({
+			type: 'get',
+			url: '/customer/list',
+			dataType: 'json',
+			success: function(resData){ 
+				console.log(resData);
+				$('#customer_list').empty();
+				var div = '';
+				
+				$.each(resData.customerList, function(i, customer){
+					div += '<tr><td>'+customer.customerName+'</td>';
+					div += '<td>'+customer.customerTel+'</td><tr>';
+				});
+				
+				$('#customer_list').append(div);
+				
+				$('#total_customer_count').empty();
+				$('#total_customer_count').text("총 구매자 : "+resData.total_customer_count);
+			}
+		});
+	}
+	
+	
+	
+</script>
+<body>
+
+
+	<div>알엠소프트 코딩테스트 - 지원자 정은지</div>
+	<hr>
+	<div>구매자 조회 리스트</div>
+	<hr>
+	
+	
+		<table border="1">
+			<caption id="total_customer_count"></caption>
+			<thead>
+				<tr>
+					<td>이름</td>
+					<td>연락처</td>
+				</tr>
+			</thead>
+			<tbody id="customer_list">
+			</tbody>
+		</table>
+		
+	<a th:href="@{/customer/list}">dataType : JSON</a>
+	<hr>
+	<a th:href="@{/}">메인으로 이동하기</a>
+
+
+</body>
+</html>

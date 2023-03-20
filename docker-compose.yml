@@ -1,0 +1,61 @@
+## for miniProject
+
+version: '3.8'
+
+# docker volume 사용
+volumes:
+  mysql-db:
+    external: true
+    name: mysql-db
+  
+networks:
+  shop-network:
+    name: shop-network
+
+services:
+  
+  web:
+    container_name: website
+    image: eeunnii/shop:ver1
+    networks:
+      - shop-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+    # db콘이 먼저 만들어지고 그 다음에 web콘 생성
+    environment:
+      spring_datasource_hikari_driver-class-name: com.mysql.cj.jdbc.Driver
+      spring_datasource_hikari_jdbc-url: jdbc:mysql://mysqldb:3307/shopper?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      spring_datasource_hikari_username: shop
+      spring_datasource_hikari_password: shop
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    links:
+      -  mysqldb
+
+
+  mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    restart: always
+    networks:
+      - shop-network
+    ports:
+      - 3307:3306
+    volumes: 
+      - ./mysql/initdb.d/:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: shop
+      MYSQL_DATABASE : shopper
+      MYSQL_USER : shop
+      MYSQL_PASSWORD : shop
+      TZ: Asia/Seoul
+      
+# 리눅스 컨테이너는 docker compose가 네트워크를 대신 관리해주지만, 윈도 컨테이너는 도커를 설치할 때 자동으로 생성되는 기본 네트워크 nat을 사용해야한다고 합니다.
+# net 네트워크를 사용하면 리눅스, 윈도우 모두 도커 컴포즈 스크립트가 잘 작동함.
+# 로컬 환경에서 아무것도 구성하지 않았더라도 이 파일은 실행될 수 있다. = 이 파일을 실행하기 전에 네트워크를 수동으로 생성하고 싶지 않다.
+
+
+
