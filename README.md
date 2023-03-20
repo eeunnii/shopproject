@@ -8,6 +8,6 @@
 ### db : mysql 8.0
 ---
 
-mvc패턴을 적용하여 프로젝트를 구성하였습니다.
+mvc패턴을 적용하여 프로젝트를 구성하였습니다.<br>
 ![image](https://user-images.githubusercontent.com/109579667/226463830-484f1321-016d-4241-8e7a-27032719633f.png)
 
