@@ -58,6 +58,7 @@
 	
 	
 	
+	
 	<select id="selectCustomerAll" resultType="CustomerDTO">
 		SELECT CUSTOMER_NO, CUSTOMER_NAME, CUSTOMER_TEL
 		  FROM CUSTOMER
@@ -93,11 +94,6 @@
 
 
 	
-	
-
-	
-
-	
 
 	<insert id="insertCustomer" parameterType="CustomerDTO">
 		INSERT INTO CUSTOMER
@@ -106,6 +102,29 @@
 			(#{customerName}, #{customerTel})
 	</insert>
 	
+	
+	<insert id="insertCompany" parameterType="CompanyDTO">
+		INSERT INTO COMPANY
+			(COMPANY_NAME, COMPANY_LEADER, COMPANY_TEL)
+		VALUES
+			(#{companyName}, #{companyLeader}, #{companyTel})
+	</insert>
+	
+	
+	<insert id="insertProduct" parameterType="ProductDTO">
+		INSERT INTO PRODUCT
+			(PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_DATE, COMPANY_NO, COMPANY_NAME)
+		VALUES
+			(#{productName}, #{productPrice}, DATE_FORMAT(NOW(), '%Y%m%d'), 5, #{companyName})
+	</insert>
+	
+	
+	<insert id="insertBuyingInfo" parameterType="BuyingInfoDTO">
+		INSERT INTO BUYING_INFO
+			(BUYING_DATE, CUSTOMER_NO, PRODUCT_NO)
+		VALUES
+			(DATE_FORMAT(NOW(), '%Y%m%d'), #{customerNo}, #{productNo})		
+	</insert>
 	
 	
 </mapper>

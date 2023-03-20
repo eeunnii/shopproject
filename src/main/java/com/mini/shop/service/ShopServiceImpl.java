@@ -5,7 +5,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.mini.shop.domain.BuyingInfoDTO;
+import com.mini.shop.domain.CompanyDTO;
 import com.mini.shop.domain.CustomerDTO;
+import com.mini.shop.domain.ProductDTO;
 import com.mini.shop.mapper.ShopMapper;
 
 import lombok.AllArgsConstructor;
@@ -51,12 +54,32 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 
+	// 구매자 추가
 	@Override
 	public int addCustomer(String name, String tel) {
 		CustomerDTO customerDTO = new CustomerDTO(name, tel);
 		return mapper.insertCustomer(customerDTO);
 	}
 	
+	// 등록업체 추가
+	public int addCompany(String companyName, String companyLeader, String companyTel) {
+		CompanyDTO companyDTO = new CompanyDTO(companyName, companyLeader, companyTel);
+		return mapper.insertCompany(companyDTO);
+	}
+	
+	// 상품 추가
+	@Override
+	public int addProduct(String productName, int productPrice, int companyNo, String companyName) {
+		ProductDTO prodcutdtoDTO = new ProductDTO(productName, productPrice, companyNo, companyName);
+		return mapper.insertProduct(prodcutdtoDTO);
+	}
+	
+	// 구매정보 추가
+	@Override
+	public int addBuyingInfo(int customerNo, int productNo) {
+		BuyingInfoDTO buyingInfoDTO = new BuyingInfoDTO(customerNo, productNo);
+		return mapper.insertBuyingInfo(buyingInfoDTO);
+	}
 	
 }
 	

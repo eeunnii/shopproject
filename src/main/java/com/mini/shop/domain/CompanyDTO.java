@@ -17,5 +17,15 @@ public class CompanyDTO {
 	private String companyName;
 	private String companyLeader;
 	private String companyTel;
+	
+	
+	public CompanyDTO(String companyName, String companyLeader, String companyTel) {
+		super();
+		this.companyName = companyName;
+		this.companyLeader = companyLeader;
+		this.companyTel = companyTel;
+	}
+	
+	
 
 }

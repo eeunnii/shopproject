@@ -22,5 +22,10 @@ public class BuyingInfoDTO {
 	private ProductDTO productDTO;
 	private CustomerDTO customerDTO;
 	
+	public BuyingInfoDTO(int customerNo, int productNo) {
+		super();
+		this.customerNo = customerNo;
+		this.productNo = productNo;
+	}
 
 }

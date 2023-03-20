@@ -38,6 +38,12 @@ public class ShopController {
 	public Map<String, Object> productList() {
 		return service.getProductList();
 	}
+	
+	// 상품 insert
+	@PutMapping("/customer/add") 
+	public void updateCustomer(@RequestParam("name") String name, @RequestParam("tel") String tel) {
+		service.addCustomer(name, tel);
+	}
 
 	
 	
@@ -85,10 +91,6 @@ public class ShopController {
 	
 	
 	
-	
-	@PutMapping("/customer/add") 
-	public void updateCustomer(@RequestParam("name") String name, @RequestParam("tel") String tel) {
-		service.addCustomer(name, tel);
-	}
+
 	
 }

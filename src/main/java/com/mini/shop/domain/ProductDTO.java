@@ -21,5 +21,18 @@ public class ProductDTO {
 	private Date productDate;
 	private int companyNo;
 	private String companyName;
+	
+	
+	public ProductDTO(String productName, int productPrice, int companyNo, String companyName) {
+		super();
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.companyNo = companyNo;
+		this.companyName = companyName;
+	}
+	
+	
+	
+	
 
 }
