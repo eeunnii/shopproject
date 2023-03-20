@@ -13,24 +13,83 @@
 스프링부트의 스타트 패키지를 생성하고, 의존성엔 spring web 을 추가하였습니다.<br>
 <br>
 ## 프로젝트 초기 설정<br>
-+ ## pom.xml<br>
+
++ DB연결을 위한 셋팅
+
 |이미지|설명|
 |--|--|
-|![image](https://user-images.githubusercontent.com/109579667/226468254-f4fa2e16-a137-4fd3-b539-9f0bddc825cb.png)|db와의 연결을 위한 의존성 추가|
-|![image](https://user-images.githubusercontent.com/109579667/226469024-1b22b827-c3bf-42eb-9a84-76b4e9cf4aa0.png)|마이바티스 의존성 추가|
-|![image](https://user-images.githubusercontent.com/109579667/226468802-8529f50d-1f90-4702-b2d2-806b10fa5781.png)|타임리프 의존성 추가|
-|![image](https://user-images.githubusercontent.com/109579667/226468863-1b0dcd6f-38ab-413b-a2d0-5e2a77acde44.png)|롬복 의존성 추가|
-|![image](https://user-images.githubusercontent.com/109579667/226468947-d8978227-9847-4cc1-8e2a-0adfa0bda631.png)|테스트 코드를 이용하기 위한 의존성 추가|
+|![image](https://user-images.githubusercontent.com/109579667/226468254-f4fa2e16-a137-4fd3-b539-9f0bddc825cb.png)|pom.xml에 mysql의존성 추가|
+|![image](https://user-images.githubusercontent.com/109579667/226469024-1b22b827-c3bf-42eb-9a84-76b4e9cf4aa0.png)|pom.xml에 마이바티스 의존성 추가|
+|![image](https://user-images.githubusercontent.com/109579667/226479584-c1f8f21a-0319-464a-9288-91b78c5fba2c.png)|application.yml 작성, hikari pool사용했습니다.<br> mybayis config의 위치와 mapper.xml의 위치를 명시해주었습니다.|
+|![image](https://user-images.githubusercontent.com/109579667/226480584-ad66657f-b57f-4dae-9333-45bbd1db93b5.png)| config패키지 생성 후, DBconfig.java 생성|
+|![image](https://user-images.githubusercontent.com/109579667/226480893-630f9089-3227-489c-b9c7-735ddadbf10e.png)| application.yml에서 명시한 config위치에 mybayis-config.xml을 추가하였습니다.|
 
-+ ## application.yml <br>
-|이미지|설명|
-|--|--|
-|![image](https://user-images.githubusercontent.com/109579667/226469393-936c1778-00a4-4d7d-b78d-8a1257d927e0.png)|서버포트는 8080, 인코딩을 설정해주었습니다.|
-|![image](https://user-images.githubusercontent.com/109579667/226470181-ae0cbe34-0ad6-4e8c-82ed-284a7def061b.png)|데이터베이스에 접근할 수 있도록 작성하였습니다. 첫 번째는 호스트DB접근, 두 번째는 호스트pc에서 mysql컨테이너 DB로 접근, 세 번째는 같은 네트워크에 있는 web컨테이너에서의 mysql컨테이너 접근 명령어입니다.|
-|![image](https://user-images.githubusercontent.com/109579667/226474962-875f513a-f34a-47a5-b6b0-2ac25e355c86.png)|mybatis config위치와 mapper의 경로를 작성하였습니다|
-
++ pom.xml에서의 기타 셋팅<br>
+>1.pom.xml에 타임리프, 롬복 의존성을 추가해두었습니다.<br>
+>2.host에서 mysql comtainer DB 연결 시 test코드로 인한 오류가 발생하여 maven build시 test를 스킵할 수 있도록 <properties> 태그안에 조건을 추가하였습니다.
+  
+    <maven.test.skip>true</maven.test.skip>
+  
+ + application.yml에서의 기타 셋팅<br>
+  > 1. 서버 포트를 지정하고, encoding을 설정하였습니다.
+  
+  ```
+  server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    session:
+      timeout: 1800
+  ```
+  
+  
 <br>
 
 ## 사용한 패키지<br>
-![image](https://user-images.githubusercontent.com/109579667/226475783-c079cbce-ca09-4d9c-8670-9ce6c50cc48b.png)   MVC2패턴을 사용하여패키지를 구성하였습니다.<br>
+![image](https://user-images.githubusercontent.com/109579667/226475783-c079cbce-ca09-4d9c-8670-9ce6c50cc48b.png) <br>
+    MVC2패턴을 사용하여패키지를 구성하였습니다.<br>
+    config, controller, domain, mapper, service 패키지가 있습니다. 
+  
+  ---
+  test 패키지의 class에는 테스트코드를 작성해두었습니다.
 
+<br>
+  
+  
+  
+## 테스트<br>
+  
+  기초 데이터 상태<br>
+  >docker compse up하였을 때 생성되는 mysqldb컨테이너에도 동일한 데이터가 생성됩니다.<br>
+  
+  |이미지|테이블명|
+  |--|--|
+  |![image](https://user-images.githubusercontent.com/109579667/226484581-b05cc4ed-e826-4933-8ef7-2f877456418f.png)|상품 테이블|
+  |![image](https://user-images.githubusercontent.com/109579667/226484657-fe4f9eca-c160-4a36-989b-5e4b8ecfbc6c.png)|구매자 테이블|
+  |![image](https://user-images.githubusercontent.com/109579667/226484692-a286da95-8199-409c-9d55-0cb76c3aa9d7.png)|등록업체 테이블|
+  |![image](https://user-images.githubusercontent.com/109579667/226484720-002585d6-90ab-4fe4-b8b7-4158184afe11.png)|구매정보 테이블| 
+  
+  <br>
+  
+  test코드 실행<br>
+  > junit test를 사용하였습니다.
+  
+  ![image](https://user-images.githubusercontent.com/109579667/226485172-e7b3b336-1992-4341-8175-2ba3eee2b6b8.png)
+
+  <br>
+  리스트 조회, 각 테이블마다 insert 정상 실행됩니다.<br>
+  
+  ![image](https://user-images.githubusercontent.com/109579667/226485492-193290af-3df1-438d-87ea-7d517d796351.png)
+
+  <br>
+  테스트 후 테이블 데이터 확인
+  
+  |전|후|
+  |--|--|
+  |![image](https://user-images.githubusercontent.com/109579667/226484581-b05cc4ed-e826-4933-8ef7-2f877456418f.png)|![image](https://user-images.githubusercontent.com/109579667/226485843-641059f8-6c24-4c16-9ebd-85f58826e27b.png)|
+  |![image](https://user-images.githubusercontent.com/109579667/226484657-fe4f9eca-c160-4a36-989b-5e4b8ecfbc6c.png)|![image](https://user-images.githubusercontent.com/109579667/226485994-2468f274-2d5f-41eb-930a-c07f2881cd08.png)|
+  |![image](https://user-images.githubusercontent.com/109579667/226484692-a286da95-8199-409c-9d55-0cb76c3aa9d7.png)|![image](https://user-images.githubusercontent.com/109579667/226486036-d0581234-3832-45fa-ba9a-6c1590a0273f.png)|
+  |![image](https://user-images.githubusercontent.com/109579667/226484720-002585d6-90ab-4fe4-b8b7-4158184afe11.png)|![image](https://user-images.githubusercontent.com/109579667/226486069-1da96139-d185-41f8-be4c-2ca53ccce074.png)| 
