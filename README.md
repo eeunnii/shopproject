@@ -21,6 +21,8 @@
 |![image](https://user-images.githubusercontent.com/109579667/226468863-1b0dcd6f-38ab-413b-a2d0-5e2a77acde44.png)|롬복 의존성 추가|
 |![image](https://user-images.githubusercontent.com/109579667/226468947-d8978227-9847-4cc1-8e2a-0adfa0bda631.png)|테스트 코드를 이용하기 위한 의존성 추가|
 <br>
+
+
 ### application.yml 
 <br>
 |![image](https://user-images.githubusercontent.com/109579667/226469393-936c1778-00a4-4d7d-b78d-8a1257d927e0.png)|서버포트는 8080, 인코딩을 설정해주었습니다.|
