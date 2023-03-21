@@ -54,7 +54,9 @@
     config, controller, domain, mapper, service 패키지가 있습니다. 
   
   ---
-  test 패키지의 class에는 테스트코드를 작성해두었습니다.
+  
+  ![image](https://user-images.githubusercontent.com/109579667/226574337-540e10be-5d21-4be7-9b3c-b10419025ac7.png)<br>
+  test 패키지의 class에는 테스트코드를 작성해두었습니다.<br>
 
 <br>
   
@@ -110,4 +112,4 @@ dataType : JSON 을 클릭하면 json데이터를 받아올 수 있습니다. <b
 
 
 ## docker compose up
-mysqldb 컨테이너는 정상적으로 생성되지만, web컨테이너와 연결에서 오류가 발생합니다. 해당오류는 제한기간내에 해결하지 못했습니다.
+mysqldb 컨테이너는 정상적으로 생성,실행되지만, web컨테이너와 연결에서 오류가 발생합니다. 해당오류는 제한기간내에 해결하지 못했습니다.
