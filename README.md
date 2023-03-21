@@ -50,13 +50,11 @@
 
 ## 사용한 패키지<br>
 ![image](https://user-images.githubusercontent.com/109579667/226475783-c079cbce-ca09-4d9c-8670-9ce6c50cc48b.png) <br>
-    MVC2패턴을 사용하여패키지를 구성하였습니다.<br>
-    config, controller, domain, mapper, service 패키지가 있습니다. 
-  
-  ---
+   >MVC2패턴을 사용하여패키지를 구성하였습니다.<br>
+   >config, controller, domain, mapper, service 패키지가 있습니다. 
   
   ![image](https://user-images.githubusercontent.com/109579667/226574337-540e10be-5d21-4be7-9b3c-b10419025ac7.png)<br>
-  test 패키지의 class에는 테스트코드를 작성해두었습니다.<br>
+  >test 패키지의 class에는 테스트코드를 작성해두었습니다.<br>
 
 <br>
   
@@ -102,13 +100,31 @@
 ---
 ## localhost 접속 시
 ![image](https://user-images.githubusercontent.com/109579667/226486901-1f135ea1-88e3-4d04-a371-feb483995c61.png)
-해당 링크를 누르면 정리된 데이터를 확인하실 수 있습니다.<br>
+>간단한 페이지를 제작하였습니다. 각 링크로 접속 시 리스트를 확인할 수 있습니다<br>
+
 ![image](https://user-images.githubusercontent.com/109579667/226487023-ce69a92b-2932-4c87-ae02-dad133699e4f.png)
-dataType : JSON 을 클릭하면 json데이터를 받아올 수 있습니다. <br>
+>dataType : JSON 을 클릭하면 json데이터를 받아올 수 있습니다. <br>
 ![image](https://user-images.githubusercontent.com/109579667/226487157-d36782db-57f2-4fdf-9c68-024bf6bd9c6c.png)
 <br>
 
 ---
+
+## postman 사용
+
+![image](https://user-images.githubusercontent.com/109579667/226599890-8d4a151c-0e22-41af-bfac-6866e0bf6b28.png)<br>
+
+```
+/product/list
+/company/list
+/customer/list
+/buyingInfo/list
+```
+
+postman에서 해당 매핑값으로 접근하여 json데이터를 받을 수 있습니다. get방식으로 접근해야합니다.
+    
+<br>
+<br>
+<br>
 
 
 ## docker compose up
