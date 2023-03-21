@@ -40,12 +40,12 @@ class ShopApplicationTests {
 	
 	@Test
 	public void 구매자추가테스트() {
-		assertEquals(1, service.addCustomer("테스트_구매자", "테스트_번호")); // 전화번호는 - 없이 숫자로만 구성
+		assertEquals(1, service.addCustomer("테스트_구매자", "테스트_번호"));
 	}
 	
 	@Test
 	public void 등록업체추가테스트() {
-		assertEquals(1, service.addCompany("테스트_회사명", "테스트_리더", "테스트_회사번호")); // 전화번호는 - 없이 숫자로만 구성
+		assertEquals(1, service.addCompany("테스트_회사명", "테스트_리더", "테스트_회사번호"));
 	}
 	
 	@Test

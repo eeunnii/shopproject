@@ -1,12 +1,6 @@
 ## for miniProject
 
 version: '3.8'
-
-# docker volume 사용
-volumes:
-  mysql-db:
-    external: true
-    name: mysql-db
   
 networks:
   shop-network:
@@ -15,7 +9,7 @@ networks:
 services:
   
   web:
-    container_name: website
+    container_name: web
     image: eeunnii/shop:ver1
     networks:
       - shop-network
@@ -44,6 +38,7 @@ services:
       - shop-network
     ports:
       - 3307:3306
+    # sql 저장위치 
     volumes: 
       - ./mysql/initdb.d/:/docker-entrypoint-initdb.d/
     environment:

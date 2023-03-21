@@ -19,7 +19,7 @@ spring:
       password: 1111
 #      jdbc-url: jdbc:mysql://127.0.0.1:3307/shopper?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
 #      username: shop
-#      password: shop
+#      password: 
 #      jdbc-url: jdbc:mysql://mysqldb:3307/shopper?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
 #      username: shop
 #      password: shop
