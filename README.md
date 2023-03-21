@@ -68,7 +68,7 @@
   |이미지|테이블명|
   |--|--|
   |![image](https://user-images.githubusercontent.com/109579667/226484581-b05cc4ed-e826-4933-8ef7-2f877456418f.png)|상품 테이블|
-  |![image](https://user-images.githubusercontent.com/109579667/226484657-fe4f9eca-c160-4a36-989b-5e4b8ecfbc6c.png)|구매자 테이블|
+  |![image](https://user-images.githubusercontent.com/109579667/226557900-31234f8c-c06d-4e86-ac47-db9ff83aa073.png)|구매자 테이블|
   |![image](https://user-images.githubusercontent.com/109579667/226484692-a286da95-8199-409c-9d55-0cb76c3aa9d7.png)|등록업체 테이블|
   |![image](https://user-images.githubusercontent.com/109579667/226484720-002585d6-90ab-4fe4-b8b7-4158184afe11.png)|구매정보 테이블| 
   
@@ -90,7 +90,7 @@
   |전|후|
   |--|--|
   |![image](https://user-images.githubusercontent.com/109579667/226484581-b05cc4ed-e826-4933-8ef7-2f877456418f.png)|![image](https://user-images.githubusercontent.com/109579667/226485843-641059f8-6c24-4c16-9ebd-85f58826e27b.png)|
-  |![image](https://user-images.githubusercontent.com/109579667/226484657-fe4f9eca-c160-4a36-989b-5e4b8ecfbc6c.png)|![image](https://user-images.githubusercontent.com/109579667/226485994-2468f274-2d5f-41eb-930a-c07f2881cd08.png)|
+  |![image](https://user-images.githubusercontent.com/109579667/226557938-c1aa2408-f4e9-44bd-842c-825eacd4ebd5.png)|![image](https://user-images.githubusercontent.com/109579667/226569178-2cbad2b0-31a9-446d-9723-21545ccba668.png)|
   |![image](https://user-images.githubusercontent.com/109579667/226484692-a286da95-8199-409c-9d55-0cb76c3aa9d7.png)|![image](https://user-images.githubusercontent.com/109579667/226486036-d0581234-3832-45fa-ba9a-6c1590a0273f.png)|
   |![image](https://user-images.githubusercontent.com/109579667/226484720-002585d6-90ab-4fe4-b8b7-4158184afe11.png)|![image](https://user-images.githubusercontent.com/109579667/226486069-1da96139-d185-41f8-be4c-2ca53ccce074.png)| 
 <br>
