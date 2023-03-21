@@ -127,5 +127,76 @@ postman에서 해당 매핑값으로 접근하여 json데이터를 받을 수 �
 <br>
 
 
-## docker compose up
-mysqldb 컨테이너는 정상적으로 생성,실행되지만, web컨테이너와 연결에서 오류가 발생합니다. 해당오류는 제한기간내에 해결하지 못했습니다.
+## docker-compose.yml <br>
+
+1. 컨테이너 간 접속을 위해 네트워크를 작성하였습니다
+
+```
+networks:
+  shop-network:
+    name: shop-network
+```
+
+2. servive - web 컨테이너
+
+```
+  web:
+    container_name: web
+    image: eeunnii/shop:ver1
+    networks:
+      - shop-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+    environment:
+      spring_datasource_hikari_driver-class-name: com.mysql.cj.jdbc.Driver
+      spring_datasource_hikari_jdbc-url: jdbc:mysql://mysqldb:3307/shopper?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      spring_datasource_hikari_username: shop
+      spring_datasource_hikari_password: 
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+ ```
+ 
+ 관련이미지는 도커허브에 push 해놓았습니다.
+ 
+ 스프링은 시작할때 DB연결을 찾는 특성이 있어 depends_on 조건을 추가해놓았습니다.
+ 
+ DB접속에 필요한 환경변수와, 서버타임, 인코딩을 설정해두었습니다.
+ 
+ 
+ 
+ 
+ 
+ 3. mysqldb 컨테이너
+ 
+ ```
+   mysqldb:
+    image: mysql:8.0
+    container_name: mysqldb
+    restart: always
+    networks:
+      - shop-network
+    ports:
+      - 3307:3306
+    # sql 저장위치 
+    volumes: 
+      - ./mysql/initdb.d/:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: shop
+      MYSQL_DATABASE : shopper
+      MYSQL_USER : shop
+      MYSQL_PASSWORD : 
+      TZ: Asia/Seoul
+  ```
+ 
+ mysql8.0을 사용하였고, 환경변수 설정, 기초sql이 실행될 수 있도록 volumes을 지정해두었습니다.
+ 
+ 
+ 
+ 
+
+## 주의사항
+> mysqldb 컨테이너는 정상적으로 생성,실행되지만, web컨테이너가 mysqldb컨테이너에 연결되지 못하고 다운되는 오류가 있습니다. 해당오류는 제한기간내에 해결하지 못했습니다. <br>
+<br>
